@@ -5,7 +5,6 @@ const SHEET_ID = '11KL_-waNbU7IU7kaGDKTw-Xy6j5YaBBnSZ044QrJwFM';
 const SHEET_NAME = 'device submission';
 
 exports.handler = async (event) => {
-  // Always return valid JSON, even on error
   const safeJsonResponse = (statusCode, body) => ({
     statusCode,
     headers: { 'Content-Type': 'application/json' },
@@ -19,16 +18,15 @@ exports.handler = async (event) => {
   try {
     const data = JSON.parse(event.body || '{}');
 
-    // Ensure Google service account is set
     if (!process.env.GOOGLE_SERVICE_ACCOUNT) {
       console.error('GOOGLE_SERVICE_ACCOUNT env var is missing');
-      return safeJsonResponse(500, { success: false, error: 'Server misconfiguration' });
+      return safeJsonResponse(500, { success: false, error: 'Google credentials missing' });
     }
 
     const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 
-    const doc = new GoogleSpreadsheet(SHEET_ID);
-    await doc.useServiceAccountAuth(serviceAccount);
+    // ✅ CORRECT WAY FOR v4+
+    const doc = new GoogleSpreadsheet(SHEET_ID, serviceAccount);
     await doc.loadInfo();
 
     const sheet = doc.sheetsByTitle[SHEET_NAME];
@@ -66,10 +64,7 @@ exports.handler = async (event) => {
 
     return safeJsonResponse(200, { success: true, id: nextId });
   } catch (error) {
-    // Log full error for debugging
-    console.error('Save-device error:', error.message, error.stack);
-
-    // Return safe JSON error
+    console.error('Save-device error:', error.message);
     return safeJsonResponse(500, {
       success: false,
       error: error.message || 'Internal server error'
