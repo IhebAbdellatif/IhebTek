@@ -1,8 +1,8 @@
 // netlify/functions/save-device.js
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
-const SHEET_ID = '11KL_-waNbU7IU7kaGDKTw-Xy6j5YaBBnSZ044QrJwFM';
-const SHEET_NAME = 'device submission';
+const SHEET_ID = 'https://docs.google.com/spreadsheets/d/1WGFJFwxzt3KsBQE4-cRk-Zoj_RHi2zyEUbZWK6BhogA/edit?gid=0#gid=0';
+const SHEET_NAME = 'ihebtekD';
 
 exports.handler = async (event) => {
   const safeJsonResponse = (statusCode, body) => ({
@@ -71,3 +71,4 @@ exports.handler = async (event) => {
     });
   }
 };
+
