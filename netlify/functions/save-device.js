@@ -1,8 +1,9 @@
 // netlify/functions/save-device.js
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
-const SHEET_ID = 'https://docs.google.com/spreadsheets/d/1WGFJFwxzt3KsBQE4-cRk-Zoj_RHi2zyEUbZWK6BhogA/edit?gid=0#gid=0';
-const SHEET_NAME = 'ihebtekD';
+// ✅ NEW SHEET ID
+const SHEET_ID = '1WGFJFwxzt3KsBQE4-cRk-Zoj_RHi2zyEUbZWK6BhogA';
+const SHEET_NAME = 'device submission';
 
 exports.handler = async (event) => {
   const safeJsonResponse = (statusCode, body) => ({
@@ -25,10 +26,11 @@ exports.handler = async (event) => {
 
     const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 
-    // ✅ CORRECT WAY FOR v4+
+    // ✅ CORRECT AUTH FOR v4+
     const doc = new GoogleSpreadsheet(SHEET_ID, serviceAccount);
     await doc.loadInfo();
 
+    // ✅ Ensure tab is named "device submission"
     const sheet = doc.sheetsByTitle[SHEET_NAME];
     if (!sheet) {
       const msg = `Sheet "${SHEET_NAME}" not found. Available: ${Object.keys(doc.sheetsByTitle).join(', ')}`;
@@ -49,17 +51,17 @@ exports.handler = async (event) => {
 
     await sheet.addRow({
       'ID': nextId,
-      'Client Name': data.clientName,
-      'Phone': data.phone,
+      'Nom du client': data.clientName,
+      'Téléphone': data.phone,
       'Email': data.email || '',
-      'Device Type': data.deviceType,
-      'Brand': data.brand,
-      'Model': data.model || '',
-      'Datetime': data.datetime,
-      'Problem': problem,
+      'Type': data.deviceType,
+      'Marque': data.brand,
+      'Modèle': data.model || '',
+      'Date/Heure': data.datetime,
+      'Problème': problem,
       'Description': data.description || '',
-      'Payment': data.payment,
-      'Repaired': data.repaired
+      'Paiement (Oui/Non)': data.payment,
+      'Réparé (Oui/Non)': data.repaired
     });
 
     return safeJsonResponse(200, { success: true, id: nextId });
@@ -71,4 +73,3 @@ exports.handler = async (event) => {
     });
   }
 };
-
