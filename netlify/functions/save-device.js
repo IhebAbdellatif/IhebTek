@@ -15,16 +15,18 @@ exports.handler = async (event) => {
   }
 
   try {
-    const doc = new GoogleSpreadsheet(SHEET_ID);
-    
-    // ✅ Use OAuth2 with refresh token
-    await doc.useOAuth2({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      refreshToken: process.env.GOOGLE_REFRESH_TOKEN
-    });
+    // ✅ OAuth2 credentials for google-spreadsheet v4+
+    const creds = {
+      type: 'oauth',
+      client_id: process.env.GOOGLE_CLIENT_ID,
+      client_secret: process.env.GOOGLE_CLIENT_SECRET,
+      refresh_token: process.env.GOOGLE_REFRESH_TOKEN
+    };
 
+    // ✅ Pass creds directly to constructor
+    const doc = new GoogleSpreadsheet(SHEET_ID, creds);
     await doc.loadInfo();
+
     const sheet = doc.sheetsByIndex[0]; // Use first sheet
 
     const rows = await sheet.getRows();
