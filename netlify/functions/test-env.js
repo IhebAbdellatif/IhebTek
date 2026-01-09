@@ -1,3 +1,4 @@
+// netlify/functions/test-env.js
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 exports.handler = async () => {
@@ -12,7 +13,7 @@ exports.handler = async () => {
         success: true,
         title: doc.title,
         sheets: Object.keys(doc.sheetsByTitle)
-      })
+      }, null, 2)
     };
   } catch (error) {
     return {
@@ -20,7 +21,7 @@ exports.handler = async () => {
       body: JSON.stringify({
         success: false,
         error: error.message
-      })
+      }, null, 2)
     };
   }
 };
