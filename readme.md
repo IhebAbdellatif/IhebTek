@@ -39,3 +39,12 @@ This website is built to showcase services, accept customer inquiries via email,
 ---
 
 ## 📁 Project Structure
+index.html
+dashboard.html
+package.json
+netlify/
+  └── functions/
+        ├── check-login.js
+        └── save-device.js
+assets/
+_redirects
