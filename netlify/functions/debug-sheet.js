@@ -1,10 +1,13 @@
 // netlify/functions/debug-sheet.js
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
+// ✅ NEW SHEET ID
+const SHEET_ID = '1WGFJFwxzt3KsBQE4-cRk-Zoj_RHi2zyEUbZWK6BhogA';
+
 exports.handler = async () => {
   try {
     const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
-    const doc = new GoogleSpreadsheet('11KL_-waNbU7IU7kaGDKTw-Xy6j5YaBBnSZ044QrJwFM', serviceAccount);
+    const doc = new GoogleSpreadsheet(SHEET_ID, serviceAccount);
     
     await doc.loadInfo();
     
@@ -17,13 +20,11 @@ exports.handler = async () => {
       }, null, 2)
     };
   } catch (error) {
-    // Return FULL error message
     return {
       statusCode: 200,
       body: JSON.stringify({
         success: false,
         error: error.message,
-        code: error.code,
         stack: error.stack ? error.stack.split('\n')[0] : 'no stack'
       }, null, 2)
     };
