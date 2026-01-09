@@ -1,9 +1,7 @@
 // netlify/functions/save-device.js
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
-// ✅ NEW SHEET ID
 const SHEET_ID = '1WGFJFwxzt3KsBQE4-cRk-Zoj_RHi2zyEUbZWK6BhogA';
-const SHEET_NAME = 'device submission';
 
 exports.handler = async (event) => {
   const safeJsonResponse = (statusCode, body) => ({
@@ -20,22 +18,21 @@ exports.handler = async (event) => {
     const data = JSON.parse(event.body || '{}');
 
     if (!process.env.GOOGLE_SERVICE_ACCOUNT) {
-      console.error('GOOGLE_SERVICE_ACCOUNT env var is missing');
       return safeJsonResponse(500, { success: false, error: 'Google credentials missing' });
     }
 
     const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
-
-    // ✅ CORRECT AUTH FOR v4+
     const doc = new GoogleSpreadsheet(SHEET_ID, serviceAccount);
     await doc.loadInfo();
 
-    // ✅ Ensure tab is named "device submission"
-    const sheet = doc.sheetsByTitle[SHEET_NAME];
+    // ✅ Use first sheet if "device submission" not found
+    let sheet = doc.sheetsByTitle['device submission'];
     if (!sheet) {
-      const msg = `Sheet "${SHEET_NAME}" not found. Available: ${Object.keys(doc.sheetsByTitle).join(', ')}`;
-      console.error(msg);
-      return safeJsonResponse(400, { success: false, error: msg });
+      const sheetList = Object.keys(doc.sheetsByTitle);
+      if (sheetList.length === 0) {
+        return safeJsonResponse(400, { success: false, error: 'No sheets found' });
+      }
+      sheet = doc.sheetsByTitle[sheetList[0]]; // Use first sheet
     }
 
     // Get next ID
@@ -66,10 +63,7 @@ exports.handler = async (event) => {
 
     return safeJsonResponse(200, { success: true, id: nextId });
   } catch (error) {
-    console.error('Save-device error:', error.message);
-    return safeJsonResponse(500, {
-      success: false,
-      error: error.message || 'Internal server error'
-    });
+    console.error('Error:', error.message);
+    return safeJsonResponse(500, { success: false, error: error.message });
   }
 };
