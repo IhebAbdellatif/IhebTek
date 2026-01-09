@@ -1,16 +1,26 @@
-// netlify/functions/test-env.js
-exports.handler = async () => {
-  const hasKey = !!process.env.GOOGLE_SERVICE_ACCOUNT;
-  const keyPreview = hasKey 
-    ? process.env.GOOGLE_SERVICE_ACCOUNT.substring(0, 50) + '...' 
-    : 'MISSING';
+const { GoogleSpreadsheet } = require('google-spreadsheet');
 
-  return {
-    statusCode: 200,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      has_GOOGLE_SERVICE_ACCOUNT: hasKey,
-      preview: keyPreview
-    }, null, 2)
-  };
+exports.handler = async () => {
+  try {
+    const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+    const doc = new GoogleSpreadsheet('11KL_-waNbU7IU7kaGDKTw-Xy6j5YaBBnSZ044QrJwFM', serviceAccount);
+    
+    await doc.loadInfo();
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        success: true,
+        title: doc.title,
+        sheets: Object.keys(doc.sheetsByTitle)
+      })
+    };
+  } catch (error) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        success: false,
+        error: error.message
+      })
+    };
+  }
 };
