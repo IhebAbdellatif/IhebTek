@@ -15,27 +15,18 @@ exports.handler = async (event) => {
   }
 
   try {
-    const data = JSON.parse(event.body || '{}');
+    const doc = new GoogleSpreadsheet(SHEET_ID);
+    
+    // ✅ Use OAuth2 with refresh token
+    await doc.useOAuth2({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      refreshToken: process.env.GOOGLE_REFRESH_TOKEN
+    });
 
-    if (!process.env.GOOGLE_SERVICE_ACCOUNT) {
-      return safeJsonResponse(500, { success: false, error: 'Google credentials missing' });
-    }
-
-    const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
-    const doc = new GoogleSpreadsheet(SHEET_ID, serviceAccount);
     await doc.loadInfo();
+    const sheet = doc.sheetsByIndex[0]; // Use first sheet
 
-    // ✅ Use first sheet if "device submission" not found
-    let sheet = doc.sheetsByTitle['device submission'];
-    if (!sheet) {
-      const sheetList = Object.keys(doc.sheetsByTitle);
-      if (sheetList.length === 0) {
-        return safeJsonResponse(400, { success: false, error: 'No sheets found' });
-      }
-      sheet = doc.sheetsByTitle[sheetList[0]]; // Use first sheet
-    }
-
-    // Get next ID
     const rows = await sheet.getRows();
     let maxId = 0;
     for (const row of rows) {
@@ -44,6 +35,7 @@ exports.handler = async (event) => {
     }
     const nextId = maxId + 1;
 
+    const data = JSON.parse(event.body || '{}');
     const problem = (data.problemHardware || 'Aucun') + ' / ' + (data.problemSoftware || 'Aucun');
 
     await sheet.addRow({
