@@ -2,25 +2,40 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 const SHEET_ID = '11KL_-waNbU7IU7kaGDKTw-Xy6j5YaBBnSZ044QrJwFM';
+const SHEET_NAME = 'device submission';
 
 exports.handler = async (event) => {
+  // Always return valid JSON, even on error
+  const safeJsonResponse = (statusCode, body) => ({
+    statusCode,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method not allowed' };
+    return safeJsonResponse(405, { success: false, error: 'Method not allowed' });
   }
 
   try {
     const data = JSON.parse(event.body || '{}');
 
-    // 🔑 Get service account from Netlify environment variable
+    // Ensure Google service account is set
+    if (!process.env.GOOGLE_SERVICE_ACCOUNT) {
+      console.error('GOOGLE_SERVICE_ACCOUNT env var is missing');
+      return safeJsonResponse(500, { success: false, error: 'Server misconfiguration' });
+    }
+
     const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 
     const doc = new GoogleSpreadsheet(SHEET_ID);
     await doc.useServiceAccountAuth(serviceAccount);
     await doc.loadInfo();
 
-    const sheet = doc.sheetsByTitle['device submission'];
+    const sheet = doc.sheetsByTitle[SHEET_NAME];
     if (!sheet) {
-      throw new Error('Sheet not found');
+      const msg = `Sheet "${SHEET_NAME}" not found. Available: ${Object.keys(doc.sheetsByTitle).join(', ')}`;
+      console.error(msg);
+      return safeJsonResponse(400, { success: false, error: msg });
     }
 
     // Get next ID
@@ -49,16 +64,15 @@ exports.handler = async (event) => {
       'Repaired': data.repaired
     });
 
-    return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ success: true, id: nextId })
-    };
+    return safeJsonResponse(200, { success: true, id: nextId });
   } catch (error) {
-    console.error('Error:', error.message);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ success: false, error: error.message })
-    };
+    // Log full error for debugging
+    console.error('Save-device error:', error.message, error.stack);
+
+    // Return safe JSON error
+    return safeJsonResponse(500, {
+      success: false,
+      error: error.message || 'Internal server error'
+    });
   }
 };
