@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Merci pour votre message ! Nous vous contacterons sous 24h. IhebTek | Réparation informatique et téléphones à Kélibia, Tunisie.">
+  <title>Merci – IhebTek</title>
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="assets/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Ubuntu', 'Tajawal', sans-serif;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+    :root {
+      --primary: #03A6A1;
+      --secondary: #FFE3BB;
+      --accent: #FFA673;
+      --dark: #2c3e50;
+      --light: #ffffff;
+      --highlight: #FF4F0F;
+      --bg: var(--secondary);
+      --text: var(--dark);
+      --card-bg: var(--light);
+      --hero-text: white;
+    }
+    [data-theme="dark"] {
+      --primary: #04C1BC;
+      --secondary: #1a1a1a;
+      --accent: #FFB580;
+      --dark: #f0f0f0;
+      --light: #2a2a2a;
+      --bg: #121212;
+      --text: #e0e0e0;
+      --card-bg: #1e1e1e;
+    }
+    body {
+      background: linear-gradient(135deg, rgba(3, 166, 161, 0.8), rgba(255, 166, 115, 0.7)), 
+                  url('assets/gallery/gallery1.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--hero-text);
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-size: 1.1rem;
+    }
+    /* Header */
+    header {
+      padding: 20px 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+    .logo-img {
+      max-height: 150px;
+      width: auto;
+    }
+    /* Main Content */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+    main h1 {
+      font-size: 3.5rem;
+      color: white;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+    main p {
+      font-size: 1.4rem;
+      margin-bottom: 30px;
+      color: white;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    }
+    .check-icon {
+      font-size: 4rem;
+      color: white;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+    .home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+      text-shadow: none;
+    }
+    .home-btn:hover {
+      background-color: #028a85;
+    }
+    /* Footer */
+    footer {
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: auto;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .social-links {
+      margin: 15px 0;
+    }
+    .social-links a {
+      color: white;
+      font-size: 1.3rem;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: var(--accent);
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      main h1 { font-size: 2.8rem; }
+      main p { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="IhebTek" class="logo-img">
+  </header>
+
+  <main>
+    <div class="check-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <h1 class="trans" key="thank_you">Merci pour votre message !</h1>
+    <p class="trans" key="follow_up">Nous vous contacterons dans les plus brefs délais. En attendant, n'hésitez pas à parcourir nos services.</p>
+    <a href="/" class="home-btn">
+      <i class="fas fa-home"></i> <span class="trans" key="go_home">Retour à l'accueil</span>
+    </a>
+  </main>
+
+  <footer>
+    <p>© 2026 IhebTek. Tous droits réservés.</p>
+	<p>Propriétaire : Iheb Ab</p>
+    <p>Kélibia, Tunisie | +216 28 510 060</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/reboot.tn" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/reboot.tn" target="_blank" rel="noopener" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://wa.me/21628510060" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Translations
+    const translations = {
+      fr: {
+        thank_you: "Merci pour votre message !",
+        follow_up: "Nous vous contacterons dans les plus brefs délais. En attendant, n'hésitez pas à parcourir nos services.",
+        go_home: "Retour à l'accueil"
+      },
+      en: {
+        thank_you: "Thank you for your message!",
+        follow_up: "We will get back to you as soon as possible. In the meantime, feel free to browse our services.",
+        go_home: "Back to Home"
+      },
+      ar: {
+        thank_you: "شكرًا على رسالتكم!",
+        follow_up: "سوف نعاود الاتصال بكم في أقرب وقت ممكن. وفي الوقت نفسه، لا تتردد في تصفح خدماتنا.",
+        go_home: "العودة إلى الصفحة الرئيسية"
+      }
+    };
+
+    // Get language from localStorage (set on index.html)
+    const currentLang = localStorage.getItem('lang') || 'fr';
+
+    // Apply translations
+    document.querySelectorAll('.trans').forEach(el => {
+      const key = el.getAttribute('key');
+      if (translations[currentLang] && translations[currentLang][key]) {
+        el.textContent = translations[currentLang][key];
+      }
+    });
+
+    // Update document language and direction
+    document.documentElement.lang = currentLang;
+    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+    document.body.style.fontFamily = currentLang === 'ar' ? "'Tajawal', sans-serif" : "'Ubuntu', sans-serif";
+
+    // Apply saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
+</body>
+</html>

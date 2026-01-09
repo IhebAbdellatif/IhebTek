@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="IhebTek | Réparation professionnelle d'ordinateurs, smartphones, consoles et réseaux en Tunisie. Service rapide, fiable et à domicile. Contactez-nous via e-mail !">
+<title>IhebTek | Réparation Informatique & Téléphones</title>
+<!-- Favicon -->
+<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+<link rel="icon" href="assets/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- Social & SEO Meta Tags -->
+<meta property="og:title" content="IhebTek | Réparation Informatique & Téléphones">
+<meta property="og:description" content="Réparation professionnelle d'ordinateurs, smartphones, consoles et réseaux en Tunisie. Service rapide, fiable et à domicile.">
+<meta property="og:image" content="assets/gallery/gallery1.png">
+<meta property="og:url" content="https://reboot-tn.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@reboot_tn">
+<!-- Fonts & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Ubuntu', 'Tajawal', sans-serif;
+transition: background-color 0.4s ease, color 0.4s ease;
+}
+:root {
+--primary: #03A6A1;
+--secondary: #FFE3BB;
+--accent: #FFA673;
+--dark: #2c3e50;
+--light: #ffffff;
+--highlight: #FF4F0F;
+--bg: var(--secondary);
+--text: var(--dark);
+--card-bg: var(--light);
+--hero-text: white;
+--section-bg: var(--light);
+--contact-bg: var(--secondary);
+--footer-bg: var(--dark);
+}
+[data-theme="dark"] {
+--primary: #04C1BC;
+--secondary: #1a1a1a;
+--accent: #FFB580;
+--dark: #f0f0f0;
+--light: #2a2a2a;
+--bg: #121212;
+--text: #e0e0e0;
+--card-bg: #1e1e1e;
+--section-bg: #1a1a1a;
+--contact-bg: #1a1a1a;
+--footer-bg: #1a1a1a;
+--hero-text: white;
+}
+body {
+background-color: transparent;
+color: var(--text);
+line-height: 1.7;
+margin: 0;
+padding: 0;
+}
+/* === FIXED BACKGROUND FOR ENTIRE PAGE === */
+.fixed-background {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(135deg, rgba(3, 166, 161, 0.8), rgba(255, 166, 115, 0.7)),
+url('assets/gallery/gallery1.png');
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+z-index: -1;
+}
+/* === LIGHTBOX === */
+.lightbox-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.9);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+z-index: 1000;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease, visibility 0.3s ease;
+padding: 20px;
+box-sizing: border-box;
+}
+.lightbox-overlay.active {
+opacity: 1;
+visibility: visible;
+}
+.lightbox-content-wrapper {
+position: relative;
+max-width: 90vw;
+max-height: 85vh;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.lightbox-image,
+.lightbox-video {
+max-width: 100%;
+max-height: 85vh;
+height: auto;
+width: auto;
+object-fit: contain;
+outline: none;
+border: 2px solid white;
+box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+}
+.lightbox-caption {
+color: white;
+margin-top: 20px;
+font-size: 1.2rem;
+text-align: center;
+max-width: 90vw;
+}
+.lightbox-overlay .close-btn {
+position: absolute;
+top: 20px;
+right: 20px;
+color: white;
+font-size: 2.5rem;
+cursor: pointer;
+background: none;
+border: none;
+opacity: 0.8;
+}
+.lightbox-overlay .close-btn:hover {
+opacity: 1;
+}
+/* === GLASS CONTENT WRAPPER === */
+.glass-content {
+position: relative;
+z-index: 3;
+background: rgba(255, 255, 255, 0.22);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border-top-left-radius: 30px;
+border-top-right-radius: 30px;
+padding: 40px 20px 60px;
+margin-top: -40px;
+}
+[data-theme="dark"] .glass-content {
+background: rgba(30, 30, 30, 0.35);
+}
+/* === STATIC MINI GALLERY === */
+.gallery-section {
+padding: 0 0 20px;
+background-color: transparent !important;
+max-width: 1200px;
+margin: 0 auto;
+}
+.section-title {
+text-align: center;
+margin-bottom: 30px;
+}
+.section-title h2 {
+font-size: 2.5rem;
+color: var(--text);
+position: relative;
+display: inline-block;
+padding-bottom: 15px;
+}
+.section-title h2::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 100px;
+height: 4px;
+background: var(--accent);
+border-radius: 2px;
+}
+.gallery-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+gap: 15px;
+margin-top: 20px;
+}
+.gallery-item {
+border-radius: 10px;
+overflow: hidden;
+background-color: var(--card-bg);
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+}
+.gallery-item img,
+.gallery-item video {
+width: 100%;
+height: 160px;
+object-fit: cover;
+display: block;
+}
+.gallery-item video {
+background-color: #000;
+border: none;
+}
+.gallery-caption {
+padding: 6px 4px 8px;
+font-size: 0.85rem;
+text-align: center;
+color: var(--text);
+font-weight: 500;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.gallery-item:hover {
+transform: translateY(-5px);
+box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+/* Hero Section */
+.hero {
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+background: linear-gradient(135deg, rgba(3, 166, 161, 0.8), rgba(255, 166, 115, 0.7)),
+url('assets/gallery/gallery1.png');
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+color: var(--hero-text);
+padding: 20px;
+position: relative;
+z-index: 2;
+}
+.hero-logo {
+max-width: 400px;
+width: 90%;
+margin: 0 auto 20px;
+}
+.hero h1 {
+display: none;
+}
+.hero p {
+font-size: 1.8rem;
+margin-bottom: 40px;
+font-weight: 500;
+text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+.controls {
+position: absolute;
+top: 20px;
+right: 20px;
+display: flex;
+gap: 10px;
+z-index: 100;
+}
+.lang-select, .theme-toggle {
+padding: 8px 12px;
+border: none;
+border-radius: 30px;
+background: rgba(255,255,255,0.2);
+color: white;
+font-size: 1rem;
+cursor: pointer;
+backdrop-filter: blur(5px);
+border: 1px solid rgba(255,255,255,0.3);
+transition: all 0.3s ease;
+}
+.lang-select option {
+color: var(--text);
+background-color: var(--card-bg);
+}
+.lang-select option[value="ar"] {
+text-align: right;
+direction: rtl;
+font-family: 'Tajawal', sans-serif;
+}
+/* Services Menu */
+.services-menu {
+display: flex;
+overflow-x: auto;
+gap: 10px;
+padding: 15px 0;
+margin: 30px 0 40px;
+scrollbar-width: thin;
+scrollbar-color: var(--accent) transparent;
+background-color: transparent;
+border-bottom: 2px solid var(--secondary);
+align-items: center;
+white-space: nowrap;
+}
+.services-menu::-webkit-scrollbar {
+height: 6px;
+}
+.services-menu::-webkit-scrollbar-thumb {
+background-color: var(--accent);
+border-radius: 10px;
+}
+.services-menu::-webkit-scrollbar-track {
+background: transparent;
+}
+.menu-item {
+display: flex;
+align-items: center;
+gap: 8px;
+padding: 10px 20px;
+background-color: var(--primary);
+color: white;
+border-radius: 30px;
+font-weight: 600;
+font-size: 1rem;
+transition: all 0.3s ease;
+cursor: pointer;
+min-width: 160px;
+justify-content: center;
+flex-shrink: 0;
+}
+.menu-item:hover {
+background-color: var(--accent);
+transform: translateY(-2px);
+}
+.menu-item.active {
+background-color: var(--accent);
+font-weight: 700;
+}
+.services {
+padding: 0 0 40px;
+background-color: transparent !important;
+max-width: 1200px;
+margin: 0 auto;
+}
+.service-category {
+display: none;
+margin-bottom: 40px;
+}
+.service-category.active {
+display: block;
+animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.service-category h3 {
+font-size: 1.8rem;
+margin-bottom: 15px;
+color: var(--primary);
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.service-items {
+list-style: none;
+padding-left: 10px;
+}
+.service-items li {
+padding: 8px 0;
+font-size: 1.05rem;
+color: var(--text);
+position: relative;
+padding-left: 25px;
+}
+.service-items li::before {
+content: "•";
+color: var(--accent);
+font-weight: bold;
+position: absolute;
+left: 10px;
+}
+/* Contact Section */
+.contact-section {
+padding: 0 0 60px;
+background-color: transparent !important;
+max-width: 1200px;
+margin: 0 auto;
+}
+.contact-container {
+max-width: 700px;
+margin: 0 auto;
+background: var(--card-bg);
+border-radius: 10px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+padding: 40px;
+border: 1px solid var(--secondary);
+}
+.contact-title {
+text-align: center;
+font-size: 2.2rem;
+color: var(--text);
+margin-bottom: 30px;
+}
+.form-group {
+margin-bottom: 25px;
+}
+.form-group label {
+display: block;
+margin-bottom: 8px;
+font-weight: 600;
+color: var(--text);
+}
+.form-control {
+width: 100%;
+padding: 14px;
+border: 1px solid var(--accent);
+border-radius: 8px;
+font-size: 1rem;
+background-color: var(--card-bg);
+color: var(--text);
+}
+.form-control:focus {
+outline: none;
+border-color: var(--primary);
+}
+.error-message {
+color: var(--highlight);
+font-size: 0.9rem;
+margin-top: 5px;
+display: none;
+}
+.success-message {
+display: none;
+color: var(--primary);
+text-align: center;
+margin: 10px 0;
+}
+.submit-btn {
+width: 100%;
+padding: 16px;
+border: none;
+border-radius: 8px;
+font-size: 1.1rem;
+font-weight: 600;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+background-color: var(--primary);
+color: white;
+}
+.submit-btn:hover {
+background-color: #028a85;
+}
+/* Footer */
+footer {
+background-color: transparent !important;
+color: var(--text);
+text-align: center;
+padding: 30px 0 20px;
+margin-top: 40px;
+}
+.social-links {
+margin: 15px 0;
+}
+.social-links a {
+color: var(--text);
+font-size: 1.5rem;
+margin: 0 10px;
+transition: color 0.3s ease;
+}
+.social-links a:hover {
+color: var(--accent);
+}
+.sr-only {
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0,0,0,0);
+white-space: nowrap;
+border: 0;
+}
+@media (max-width: 768px) {
+.hero p { font-size: 1.4rem; }
+.section-title h2 { font-size: 2.2rem; }
+.menu-item {
+min-width: 140px;
+font-size: 0.95rem;
+padding: 8px 15px;
+gap: 6px;
+}
+.contact-container { padding: 30px; }
+.lang-select, .theme-toggle { padding: 8px 12px; font-size: 0.9rem; }
+.gallery-grid {
+grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+gap: 10px;
+}
+.gallery-item img,
+.gallery-item video {
+height: 120px;
+}
+.glass-content {
+padding: 30px 15px 50px;
+margin-top: -30px;
+border-top-left-radius: 24px;
+border-top-right-radius: 24px;
+}
+}
+</style>
+</head>
+<body>
+<!-- Fixed background that stays during scroll -->
+<div class="fixed-background"></div>
+<!-- Hero Section -->
+<section class="hero">
+<div class="controls">
+<select id="langSelect" class="lang-select" aria-label="Choisir la langue">
+<option value="fr">Français</option>
+<option value="en">English</option>
+<option value="ar">العربية</option>
+</select>
+<button id="themeToggle" class="theme-toggle" aria-label="Basculer le mode sombre">
+<i class="fas fa-moon"></i>
+</button>
+</div>
+<img src="assets/logo.png" alt="IhebTek" class="hero-logo">
+<p>High Quality Fast Repair</p>
+</section>
+
+<div class="glass-content">
+
+<!-- Services Section -->
+<section class="services">
+<div class="section-title">
+<h2 class="trans" key="services">Liste Complète des Services</h2>
+</div>
+<div class="services-menu" role="tablist">
+<div class="menu-item" data-target="computer">
+<i class="fas fa-laptop"></i> <span class="trans" key="computer">Ordinateur</span>
+</div>
+<div class="menu-item" data-target="smartphone-tablet">
+<i class="fas fa-mobile-alt"></i> <span class="trans" key="smartphone">Smartphone</span>
+</div>
+<div class="menu-item" data-target="console">
+<i class="fas fa-gamepad"></i> <span class="trans" key="console">Console</span>
+</div>
+<div class="menu-item" data-target="printers">
+<i class="fas fa-print"></i> <span class="trans" key="printers">Imprimantes</span>
+</div>
+<div class="menu-item" data-target="cameras">
+<i class="fas fa-camera"></i> <span class="trans" key="cameras">Caméras</span>
+</div>
+<div class="menu-item" data-target="server-network">
+<i class="fas fa-network-wired"></i> <span class="trans" key="network">Réseau</span>
+</div>
+<div class="menu-item" data-target="general-support">
+<i class="fas fa-cogs"></i> <span class="trans" key="support">Support</span>
+</div>
+</div>
+
+<!-- Computer Services -->
+<div id="computer" class="service-category">
+<h3><i class="fas fa-laptop"></i>  <span class="trans" key="computer_title">Services Ordinateurs & Portables</span></h3>
+<ul class="service-items">
+<li><span class="trans" key="computer_1">Diagnostic et réparation matérielle (carte mère, RAM, disque dur, alimentation, etc.)</span></li>
+<li><span class="trans" key="computer_2">Dépannage logiciel et réinstallation du système (Windows, macOS, Linux)</span></li>
+<li><span class="trans" key="computer_3">Suppression de virus, logiciels malveillants et rançongiciels</span></li>
+<li><span class="trans" key="computer_4">Optimisation des performances et nettoyage du système</span></li>
+<li><span class="trans" key="computer_5">Mises à jour du système et correctifs de sécurité</span></li>
+<li><span class="trans" key="computer_6">Sauvegarde et récupération de données (disques dur, SSD, clés USB)</span></li>
+<li><span class="trans" key="computer_7">Remplacement de disque dur / SSD et mise à niveau</span></li>
+<li><span class="trans" key="computer_8">Montage de PC sur mesure (gaming, bureautique, travail)</span></li>
+<li><span class="trans" key="computer_9">Installation et configuration de logiciels (bureautique, antivirus, etc.)</span></li>
+<li><strong><span class="trans" key="computer_10">Récupération de données perdues</span></strong> : <span class="trans" key="computer_11">Intervention d'urgence après suppression, formatage ou panne de disque dur</span></li>
+<li><strong><span class="trans" key="computer_12">Mise en place de sauvegardes</span></strong> : <span class="trans" key="computer_13">Configuration sur disque externe, NAS ou cloud (Google Drive, OneDrive, etc.)</span></li>
+<li><strong><span class="trans" key="computer_14">Sécurité informatique</span></strong> : <span class="trans" key="computer_15">Installation d'antivirus, pare-feu, et conseils en chiffrement, mots de passe et phishing</span></li>
+</ul>
+</div>
+
+<!-- Smartphone & Tablet -->
+<div id="smartphone-tablet" class="service-category">
+<h3><i class="fas fa-mobile-alt"></i>  <span class="trans" key="smartphone_title">Réparation Smartphones & Tablettes</span></h3>
+<ul class="service-items">
+<li><span class="trans" key="phone_1">Remplacement d'écran (écran cassé ou fissuré)</span></li>
+<li><span class="trans" key="phone_2">Remplacement de batterie (iPhone, Android, tablettes)</span></li>
+<li><span class="trans" key="phone_3">Réparation ou remplacement du port de charge</span></li>
+<li><span class="trans" key="phone_4">Changement de vitre ou écran complet (selon modèle)</span></li>
+<li><span class="trans" key="phone_5">Diagnostic et réparation de problèmes logiciels</span></li>
+<li><span class="trans" key="phone_6">Déblocage de compte iCloud / Google FRP</span></li>
+<li><span class="trans" key="phone_7">Récupération de données (photos, contacts, messages)</span></li>
+<li><span class="trans" key="phone_8">Mise à jour et optimisation du système</span></li>
+<li><span class="trans" key="phone_9">Remplacement de caméra, haut-parleur, microphone</span></li>
+<li><strong><span class="trans" key="phone_10">Déblocage FRP (Google)</span></strong> : <span class="trans" key="phone_11">Suppression du verrouillage FRP sur Samsung, Xiaomi, Huawei, etc.</span></li>
+<li><strong><span class="trans" key="phone_12">Service Sajalni</span></strong> : <span class="trans" key="phone_13">enregistrement des terminaux mobiles (téléphones et tablettes) importés individuellement de l’étranger</span></li>
+</ul>
+</div>
+
+<!-- Console -->
+<div id="console" class="service-category">
+<h3><i class="fas fa-gamepad"></i>  <span class="trans" key="console_title">Réparation de Consoles de Jeu</span></h3>
+<ul class="service-items">
+<li><span class="trans" key="console_1">Réparation de PlayStation (PS4, PS5) – problèmes de disque, HDMI, surchauffe</span></li>
+<li><span class="trans" key="console_2">Réparation de Xbox (One, Series X/S) – alimentation, lecteur de disque</span></li>
+<li><span class="trans" key="console_3">Nettoyage et remplacement de pâte thermique (évite la surchauffe)</span></li>
+<li><span class="trans" key="console_4">Réparation de manettes (boutons, sticks, batterie)</span></li>
+<li><span class="trans" key="console_5">Récupération de sauvegardes et assistance logicielle</span></li>
+</ul>
+</div>
+
+<!-- Printers -->
+<div id="printers" class="service-category">
+<h3><i class="fas fa-print"></i>  <span class="trans" key="printers_title">Réparation d'Imprimantes</span></h3>
+<ul class="service-items">
+<li><span class="trans" key="print_1">Dépannage d’imprimantes laser, jet d’encre et multifonctions</span></li>
+<li><span class="trans" key="print_2">Problèmes de connexion (USB, Wi-Fi, réseau)</span></li>
+<li><span class="trans" key="print_3">Bourrage papier, erreurs mécaniques</span></li>
+<li><span class="trans" key="print_4">Réinitialisation et remplacement de cartouches</span></li>
+<li><span class="trans" key="print_5">Installation et configuration de pilotes</span></li>
+</ul>
+</div>
+
+<!-- Cameras -->
+<div id="cameras" class="service-category">
+<h3><i class="fas fa-camera"></i>  <span class="trans" key="cameras_title">Réparation de Caméras</span></h3>
+<ul class="service-items">
+<li><span class="trans" key="cam_1">Réparation de caméras de surveillance (CCTV, IP)</span></li>
+<li><span class="trans" key="cam_2">Problèmes d’alimentation, connexion réseau, vision nocturne</span></li>
+<li><span class="trans" key="cam_3">Installation et configuration de systèmes complets</span></li>
+<li><span class="trans" key="cam_4">Accès à distance et sauvegarde des enregistrements</span></li>
+</ul>
+</div>
+
+<!-- Server & Network -->
+<div id="server-network" class="service-category">
+<h3><i class="fas fa-network-wired"></i>  <span class="trans" key="network_title">Serveurs & Réseaux</span></h3>
+<ul class="service-items">
+<li><span class="trans" key="net_1">Installation et configuration de routeurs, switches, points d’accès Wi-Fi</span></li>
+<li><span class="trans" key="net_2">Mise en place de réseaux domestiques et professionnels</span></li>
+<li><span class="trans" key="net_3">Sécurité réseau (pare-feu, VLAN, filtrage)</span></li>
+<li><span class="trans" key="net_4">Partage de fichiers et imprimantes en réseau</span></li>
+<li><span class="trans" key="net_5">Configuration de NAS (stockage réseau)</span></li>
+</ul>
+</div>
+
+<!-- General Support -->
+<div id="general-support" class="service-category">
+<h3><i class="fas fa-cogs"></i>  <span class="trans" key="support_title">Support Général</span></h3>
+<ul class="service-items">
+<li><span class="trans" key="sup_1">Assistance à distance (TeamViewer, AnyDesk)</span></li>
+<li><span class="trans" key="sup_2">Formation informatique (débutants, seniors)</span></li>
+<li><span class="trans" key="sup_3">Conseils en achat de matériel (PC, téléphone, accessoires)</span></li>
+<li><span class="trans" key="sup_4">Dépannage à domicile ou en atelier</span></li>
+<li><strong>⚡ <span class="trans" key="sup_5">Service 24h/24</span></strong></li>
+</ul>
+</div>
+
+<!-- ✅ STATIC MINI GALLERY WITH VIDEO + IMAGE -->
+<section class="gallery-section">
+<div class="section-title">
+<h2 class="trans" key="gallery">Galerie</h2>
+</div>
+<div class="gallery-grid">
+<!-- 🔸 IMAGE -->
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+alt="Réparation PC">
+<div class="gallery-caption">Réparation PC portable</div>
+</div>
+ <!-- 🔸 VIDEO -->
+<div class="gallery-item" data-video="assets/videos/repair-demo.mp4">
+<video poster="assets\gallery\iphone.jpeg" controls preload="metadata">
+<source src="assets\gallery\iPhone.mp4" type="video/mp4">
+Votre navigateur ne supporte pas la lecture vidéo.
+</video>
+<div class="gallery-caption">iphone 15 teardown</div>
+</div>
+<!-- 🔸 IMAGE -->
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1598301260799-d6f3a02a7e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+alt="Outils">
+<div class="gallery-caption">Kit professionnel</div>
+</div>
+<!-- 🔸 VIDEO -->
+<div class="gallery-item" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4">
+<video poster="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" controls preload="metadata">
+<source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+Votre navigateur ne supporte pas la vidéo.
+</video>
+<div class="gallery-caption">Test caméra IP</div>
+</div>
+<!-- 🔸 IMAGE -->
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+alt="Réparation tablette">
+<div class="gallery-caption">Tablette réparée</div>
+</div>
+<!-- 🔸 IMAGE -->
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1598301260799-d6f3a02a7e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+alt="Atelier">
+<div class="gallery-caption">Notre atelier</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Us Section -->
+<section class="contact-section">
+<div class="contact-container">
+<h2 class="contact-title trans" key="contact">Contactez-nous</h2>
+<form id="contactForm" action="https://formspree.io/f/mkgzaend" method="POST">
+<div class="form-group">
+<label for="name" class="trans" key="name">Nom complet</label>
+<input type="text" id="name" name="name" class="form-control" required>
+<div class="error-message" id="nameError"></div>
+</div>
+<div class="form-group">
+<label for="phone" class="trans" key="phone">Numéro de téléphone</label>
+<input type="tel" id="phone" name="phone" class="form-control" placeholder="Votre numéro (ex: +21628510060)" required>
+<div class="error-message" id="phoneError"></div>
+</div>
+<div class="form-group">
+<label for="description" class="trans" key="problem">Description du problème</label>
+<textarea id="description" name="message" class="form-control" rows="5" placeholder="Décrivez votre problème..." required></textarea>
+<div class="error-message" id="descError"></div>
+</div>
+<button type="submit" class="submit-btn">
+<i class="fas fa-envelope"></i> <span class="trans" key="email">Envoyer par e-mail</span>
+</button>
+<div class="success-message" id="successMessage">
+✅ Merci ! Votre message a été envoyé. Nous vous répondrons sous 24h.
+</div>
+</form>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<p>© 2026 IhebTek. Tous droits réservés.</p>
+<p>Kélibia, Tunisie | +216 28 510 060</p>
+<p><strong>Propriétaire : Iheb Ab</strong></p>
+<p class="trans" key="open24">Ouvert 24h/24</p>
+<div class="social-links">
+<a href="https://www.instagram.com/reboot.tn" target="_blank" rel="noopener" aria-label="Instagram">
+<i class="fab fa-instagram"></i>
+</a>
+<a href="https://www.facebook.com/reboot.tn" target="_blank" rel="noopener" aria-label="Facebook">
+<i class="fab fa-facebook-f"></i>
+</a>
+<a href="https://wa.me/21628510060" target="_blank" rel="noopener" aria-label="WhatsApp">
+<i class="fab fa-whatsapp"></i>
+</a>
+</div>
+</footer>
+
+</div> <!-- .glass-content -->
+
+<!-- Screen Reader Only -->
+<div aria-live="polite" class="sr-only">
+Page traduite en <span id="current-lang-name">français</span>
+</div>
+
+<!-- ✅ Updated Lightbox HTML -->
+<div id="lightbox" class="lightbox-overlay">
+<span class="close-btn" id="close-lightbox">&times;</span>
+<div class="lightbox-content-wrapper">
+<div id="lightbox-content"></div>
+</div>
+<div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<!-- JavaScript -->
+<script>
+const translations = {
+fr: {
+services: "Liste Complète des Services",
+computer: "Ordinateur", smartphone: "Smartphone", console: "Console",
+printers: "Imprimantes", cameras: "Caméras", network: "Réseau", support: "Support",
+computer_title: "Services Ordinateurs & Portables", smartphone_title: "Réparation Smartphones & Tablettes",
+console_title: "Réparation de Consoles de Jeu", printers_title: "Réparation d'Imprimantes",
+cameras_title: "Réparation de Caméras", network_title: "Serveurs & Réseaux", support_title: "Support Général",
+computer_1: "Diagnostic et réparation matérielle (carte mère, RAM, disque dur, alimentation, etc.)",
+computer_2: "Dépannage logiciel et réinstallation du système (Windows, macOS, Linux)",
+computer_3: "Suppression de virus, logiciels malveillants et rançongiciels",
+computer_4: "Optimisation des performances et nettoyage du système",
+computer_5: "Mises à jour du système et correctifs de sécurité",
+computer_6: "Sauvegarde et récupération de données (disques dur, SSD, clés USB)",
+computer_7: "Remplacement de disque dur / SSD et mise à niveau",
+computer_8: "Montage de PC sur mesure (gaming, bureautique, travail)",
+computer_9: "Installation et configuration de logiciels (bureautique, antivirus, etc.)",
+computer_10: "Récupération de données perdues",
+computer_11: "Intervention d'urgence après suppression, formatage ou panne de disque dur",
+computer_12: "Mise en place de sauvegardes",
+computer_13: "Configuration sur disque externe, NAS ou cloud (Google Drive, OneDrive, etc.)",
+computer_14: "Sécurité informatique",
+computer_15: "Installation d'antivirus, pare-feu, et conseils en chiffrement, mots de passe et phishing",
+phone_1: "Remplacement d'écran (écran cassé ou fissuré)",
+phone_2: "Remplacement de batterie (iPhone, Android, tablettes)",
+phone_3: "Réparation ou remplacement du port de charge",
+phone_4: "Changement de vitre ou écran complet (selon modèle)",
+phone_5: "Diagnostic et réparation de problèmes logiciels",
+phone_6: "Déblocage de compte iCloud / Google FRP",
+phone_7: "Récupération de données (photos, contacts, messages)",
+phone_8: "Mise à jour et optimisation du système",
+phone_9: "Remplacement de caméra, haut-parleur, microphone",
+phone_10: "Déblocage FRP (Google)",
+phone_11: "Suppression du verrouillage FRP sur Samsung, Xiaomi, Huawei, etc.",
+phone_12: "Service Sajalni",
+phone_13: "enregistrement des terminaux mobiles (téléphones et tablettes) importés individuellement de l’étranger",
+console_1: "Réparation de PlayStation (PS4, PS5) – problèmes de disque, HDMI, surchauffe",
+console_2: "Réparation de Xbox (One, Series X/S) – alimentation, lecteur de disque",
+console_3: "Nettoyage et remplacement de pâte thermique (évite la surchauffe)",
+console_4: "Réparation de manettes (boutons, sticks, batterie)",
+console_5: "Récupération de sauvegardes et assistance logicielle",
+print_1: "Dépannage d’imprimantes laser, jet d’encre et multifonctions",
+print_2: "Problèmes de connexion (USB, Wi-Fi, réseau)",
+print_3: "Bourrage papier, erreurs mécaniques",
+print_4: "Réinitialisation et remplacement de cartouches",
+print_5: "Installation et configuration de pilotes",
+cam_1: "Réparation de caméras de surveillance (CCTV, IP)",
+cam_2: "Problèmes d’alimentation, connexion réseau, vision nocturne",
+cam_3: "Installation et configuration de systèmes complets",
+cam_4: "Accès à distance et sauvegarde des enregistrements",
+net_1: "Installation et configuration de routeurs, switches, points d’accès Wi-Fi",
+net_2: "Mise en place de réseaux domestiques et professionnels",
+net_3: "Sécurité réseau (pare-feu, VLAN, filtrage)",
+net_4: "Partage de fichiers et imprimantes en réseau",
+net_5: "Configuration de NAS (stockage réseau)",
+sup_1: "Assistance à distance (TeamViewer, AnyDesk)",
+sup_2: "Formation informatique (débutants, seniors)",
+sup_3: "Conseils en achat de matériel (PC, téléphone, accessoires)",
+sup_4: "Dépannage à domicile ou en atelier",
+sup_5: "Service 24h/24",
+contact: "Contactez-nous", name: "Nom complet", phone: "Numéro de téléphone",
+problem: "Description du problème", email: "Envoyer par e-mail", open24: "Ouvert 24h/24", gallery: "Galerie"
+},
+en: {
+services: "Full Service List",
+computer: "Computer", smartphone: "Smartphone", console: "Console",
+printers: "Printers", cameras: "Cameras", network: "Network", support: "Support",
+computer_title: "Computer & Laptop Services", smartphone_title: "Smartphone & Tablet Repair",
+console_title: "Gaming Console Repair", printers_title: "Printer Repair",
+cameras_title: "Camera Repair", network_title: "Servers & Networking", support_title: "General Support",
+computer_1: "Hardware diagnosis and repair (motherboard, RAM, hard drive, power supply, etc.)",
+computer_2: "Software troubleshooting and OS reinstallation (Windows, macOS, Linux)",
+computer_3: "Virus, malware, and ransomware removal",
+computer_4: "Performance optimization and system cleanup",
+computer_5: "System updates and security patches",
+computer_6: "Data backup and recovery (HDD, SSD, USB drives)",
+computer_7: "Hard drive / SSD replacement and upgrades",
+computer_8: "Custom PC builds (gaming, office, workstations)",
+computer_9: "Software installation and configuration (office suite, antivirus, etc.)",
+computer_10: "Lost data recovery",
+computer_11: "Emergency recovery after deletion, formatting, or drive failure",
+computer_12: "Backup setup",
+computer_13: "Configuration on external drive, NAS, or cloud (Google Drive, OneDrive, etc.)",
+computer_14: "Cybersecurity",
+computer_15: "Antivirus, firewall setup, and advice on encryption, passwords, and phishing",
+phone_1: "Screen replacement (cracked or broken screen)",
+phone_2: "Battery replacement (iPhone, Android, tablets)",
+phone_3: "Charging port repair or replacement",
+phone_4: "Glass or full screen replacement (model-dependent)",
+phone_5: "Software issue diagnosis and repair",
+phone_6: "iCloud / Google FRP unlock",
+phone_7: "Data recovery (photos, contacts, messages)",
+phone_8: "System update and optimization",
+phone_9: "Camera, speaker, microphone replacement",
+phone_10: "Google FRP unlock",
+phone_11: "FRP removal on Samsung, Xiaomi, Huawei, etc.",
+phone_12: "Sajalni Service",
+phone_13: "Registration of mobile devices (phones and tablets) individually imported from abroad",
+console_1: "PlayStation (PS4, PS5) repair – disc, HDMI, overheating issues",
+console_2: "Xbox (One, Series X/S) repair – power, disc drive",
+console_3: "Cleaning and thermal paste replacement (prevents overheating)",
+console_4: "Controller repair (buttons, sticks, battery)",
+console_5: "Save data recovery and software support",
+print_1: "Laser, inkjet, and multifunction printer troubleshooting",
+print_2: "Connection issues (USB, Wi-Fi, network)",
+print_3: "Paper jams, mechanical errors",
+print_4: "Reset and cartridge replacement",
+print_5: "Driver installation and setup",
+cam_1: "Surveillance camera (CCTV, IP) repair",
+cam_2: "Power, network connection, night vision issues",
+cam_3: "Full system installation and configuration",
+cam_4: "Remote access and recording backup",
+net_1: "Router, switch, Wi-Fi access point setup",
+net_2: "Home and business network setup",
+net_3: "Network security (firewall, VLAN, filtering)",
+net_4: "File and printer sharing over network",
+net_5: "NAS (network storage) configuration",
+sup_1: "Remote assistance (TeamViewer, AnyDesk)",
+sup_2: "Computer training (beginners, seniors)",
+sup_3: "Hardware purchase advice (PC, phone, accessories)",
+sup_4: "On-site or in-store troubleshooting",
+sup_5: "24/7 Service",
+contact: "Contact Us", name: "Full Name", phone: "Phone Number",
+problem: "Problem Description", email: "Send by Email", open24: "Open 24/7", gallery: "Gallery"
+},
+ar: {
+services: "قائمة الخدمات الكاملة",
+computer: "حاسوب", smartphone: "هاتف ذكي", console: "كونسول",
+printers: "طابعات", cameras: "كاميرات", network: "شبكة", support: "دعم",
+computer_title: "خدمات الحواسيب والأجهزة المحمولة", smartphone_title: "إصلاح الهواتف الذكية والأجهزة اللوحية",
+console_title: "إصلاح أجهزة الألعاب", printers_title: "إصلاح الطابعات",
+cameras_title: "إصلاح الكاميرات", network_title: "الخوادم والشبكات", support_title: "الدعم العام",
+computer_1: "تشخيص وإصلاح الأعطال المادية (اللوحة الأم، الذاكرة، القرص الصلب، مزود الطاقة، إلخ)",
+computer_2: "استكشاف الأخطاء البرمجية وإعادة تثبيت النظام (ويندوز، ماك أو إس، لينكس)",
+computer_3: "إزالة الفيروسات والبرمجيات الخبيثة وبرامج الفدية",
+computer_4: "تحسين الأداء وتنظيف النظام",
+computer_5: "تحديثات النظام وتصحيحات الأمان",
+computer_6: "النسخ الاحتياطي واستعادة البيانات (الأقراص الصلبة، SSD، فلاشات)",
+computer_7: "استبدال القرص الصلب / SSD والترقيات",
+computer_8: "تجميع أجهزة حاسوب حسب الطلب (ألعاب، مكتبية، عمل)",
+computer_9: "تثبيت وتكوين البرامج (حزمة المكتب، مضاد الفيروسات، إلخ)",
+computer_10: "استعادة البيانات المفقودة",
+computer_11: "تدخل طارئ بعد الحذف أو التنسيق أو عطل القرص الصلب",
+computer_12: "إعداد النسخ الاحتياطي",
+computer_13: "التكوين على قرص خارجي أو NAS أو سحابة (جوجل درايف، ون درايف، إلخ)",
+computer_14: "الأمن السيبراني",
+computer_15: "تثبيت مضاد الفيروسات، جدار الحماية، ونصائح حول التشفير وكلمات المرور والتصيد",
+phone_1: "استبدال الشاشة (شاشة مكسورة أو متشققة)",
+phone_2: "استبدال البطارية (آيفون، أندرويد، أجهزة لوحية)",
+phone_3: "إصلاح أو استبدال منفذ الشحن",
+phone_4: "استبدال الزجاج أو الشاشة الكاملة (حسب الموديل)",
+phone_5: "تشخيص وإصلاح مشاكل البرمجيات",
+phone_6: "فتح حساب iCloud / Google FRP",
+phone_7: "استعادة البيانات (الصور، جهات الاتصال، الرسائل)",
+phone_8: "تحديث وتحسين النظام",
+phone_9: "استبدال الكاميرا، السماعة، الميكروفون",
+phone_10: "فتح قفل FRP (جوجل)",
+phone_11: "إزالة قفل FRP على سامسونج، شاومي، هواوي، إلخ",
+phone_12: "خدمة سجلني",
+phone_13: "تسجيل الأجهزة المتنقلة (الهواتف والأجهزة اللوحية) المستوردة بشكل فردي من الخارج",
+console_1: "إصلاح بلايستيشن (PS4, PS5) – مشاكل القرص، HDMI، ارتفاع الحرارة",
+console_2: "إصلاح إكس بوكس (One, Series X/S) – الطاقة، قارئ الأقراص",
+console_3: "التنظيف واستبدال معجون التبريد (يمنع ارتفاع الحرارة)",
+console_4: "إصلاح وحدات التحكم (الأزرار، العصي، البطارية)",
+console_5: "استعادة البيانات المحفوظة والدعم البرمجي",
+print_1: "استكشاف أخطاء الطابعات الليزرية وذات الحبر النفاث والمتعددة الوظائف",
+print_2: "مشاكل الاتصال (USB, Wi-Fi, شبكة)",
+print_3: "تعطل الورق، الأعطال الميكانيكية",
+print_4: "إعادة الضبط واستبدال الخراطيش",
+print_5: "تثبيت وتكوين التعريفات",
+cam_1: "إصلاح كاميرات المراقبة (CCTV, IP)",
+cam_2: "مشاكل الطاقة، الاتصال بالشبكة، الرؤية الليلية",
+cam_3: "تركيب وتكوين أنظمة كاملة",
+cam_4: "الوصول عن بعد ونسخ التسجيلات احتياطياً",
+net_1: "تركيب وتكوين الراوترات، السويتشات، نقاط اتصال Wi-Fi",
+net_2: "إنشاء شبكات منزلية ومهنية",
+net_3: "أمن الشبكة (جدار الحماية، VLAN، التصفية)",
+net_4: "مشاركة الملفات والطابعات عبر الشبكة",
+net_5: "تكوين NAS (التخزين الشبكي)",
+sup_1: "المساعدة عن بعد (TeamViewer, AnyDesk)",
+sup_2: "تدريب على الحاسوب (مبتدئين، كبار السن)",
+sup_3: "نصائح لشراء المعدات (حاسوب، هاتف، إكسسوارات)",
+sup_4: "استكشاف الأعطال في الموقع أو في الورشة",
+sup_5: "خدمة 24/24",
+contact: "اتصل بنا", name: "الاسم الكامل", phone: "رقم الهاتف",
+problem: "وصف المشكلة", email: "إرسال عبر البريد الإلكتروني", open24: "مفتوح على مدار الساعة", gallery: "معرض الصور"
+}
+};
+
+// Language & Theme
+const langSelect = document.getElementById('langSelect');
+const currentLangName = document.getElementById('current-lang-name');
+let currentLang = localStorage.getItem('lang') || 'fr';
+
+function setLanguage(lang) {
+currentLang = lang;
+localStorage.setItem('lang', lang);
+translatePage();
+}
+
+function translatePage() {
+document.querySelectorAll('.trans').forEach(el => {
+const key = el.getAttribute('key');
+if (translations[currentLang] && translations[currentLang][key]) {
+el.textContent = translations[currentLang][key];
+}
+});
+document.documentElement.lang = currentLang;
+document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+document.body.style.fontFamily = currentLang === 'ar' ? "'Tajawal', sans-serif" : "'Ubuntu', sans-serif";
+langSelect.value = currentLang;
+currentLangName.textContent = currentLang === 'fr' ? 'français' : currentLang === 'en' ? 'anglais' : 'arabe';
+}
+
+const themeToggle = document.getElementById('themeToggle');
+const icon = themeToggle.querySelector('i');
+const html = document.documentElement;
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+html.setAttribute('data-theme', 'dark');
+icon.classList.replace('fa-moon', 'fa-sun');
+}
+themeToggle.addEventListener('click', () => {
+const isDark = html.getAttribute('data-theme') === 'dark';
+if (isDark) {
+html.removeAttribute('data-theme');
+localStorage.removeItem('theme');
+icon.classList.replace('fa-sun', 'fa-moon');
+} else {
+html.setAttribute('data-theme', 'dark');
+localStorage.setItem('theme', 'dark');
+icon.classList.replace('fa-moon', 'fa-sun');
+}
+});
+
+// ✅ Enhanced Lightbox Function
+function openLightbox(type, src, caption) {
+const lb = document.getElementById('lightbox');
+const content = document.getElementById('lightbox-content');
+const captionEl = document.getElementById('lightbox-caption');
+
+content.innerHTML = '';
+captionEl.textContent = caption;
+
+if (type === 'image') {
+const img = document.createElement('img');
+img.src = src;
+img.className = 'lightbox-image';
+img.alt = caption;
+content.appendChild(img);
+} else if (type === 'video') {
+const video = document.createElement('video');
+video.controls = true;
+video.className = 'lightbox-video';
+const source = document.createElement('source');
+source.src = src;
+source.type = 'video/mp4';
+video.appendChild(source);
+content.appendChild(video);
+}
+
+lb.classList.add('active');
+document.body.style.overflow = 'hidden';
+}
+
+// Gallery Click Handler
+document.addEventListener('DOMContentLoaded', () => {
+const menuItems = document.querySelectorAll('.menu-item');
+let currentlyActiveId = null;
+if (menuItems.length > 0) {
+menuItems[0].classList.add('active');
+const firstTarget = menuItems[0].getAttribute('data-target');
+if (firstTarget) {
+document.getElementById(firstTarget)?.classList.add('active');
+currentlyActiveId = firstTarget;
+}
+}
+menuItems.forEach(item => {
+item.addEventListener('click', function () {
+const targetId = this.getAttribute('data-target');
+const targetSection = document.getElementById(targetId);
+if (!targetSection) return;
+if (currentlyActiveId === targetId) {
+targetSection.classList.remove('active');
+this.classList.remove('active');
+currentlyActiveId = null;
+} else {
+if (currentlyActiveId) {
+document.getElementById(currentlyActiveId)?.classList.remove('active');
+document.querySelector(`.menu-item[data-target="${currentlyActiveId}"]`)?.classList.remove('active');
+}
+targetSection.classList.add('active');
+this.classList.add('active');
+currentlyActiveId = targetId;
+}
+});
+});
+
+// ✅ Handle both images and videos in gallery
+document.querySelectorAll('.gallery-item').forEach(item => {
+const img = item.querySelector('img');
+const videoEl = item.querySelector('video');
+const caption = item.querySelector('.gallery-caption')?.textContent || '';
+
+if (img) {
+img.addEventListener('click', (e) => {
+e.preventDefault();
+openLightbox('image', img.src, caption);
+});
+}
+
+if (videoEl) {
+// Remove inline controls to avoid conflict
+videoEl.removeAttribute('controls');
+videoEl.style.cursor = 'pointer';
+videoEl.addEventListener('click', (e) => {
+e.preventDefault();
+const src = videoEl.querySelector('source')?.src || videoEl.src;
+openLightbox('video', src, caption);
+});
+}
+});
+
+// Lightbox Close
+const lightbox = document.getElementById('lightbox');
+const closeBtn = document.getElementById('close-lightbox');
+if (lightbox && closeBtn) {
+closeBtn.addEventListener('click', () => {
+lightbox.classList.remove('active');
+document.body.style.overflow = '';
+});
+lightbox.addEventListener('click', (e) => {
+if (e.target === lightbox) {
+lightbox.classList.remove('active');
+document.body.style.overflow = '';
+}
+});
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+lightbox.classList.remove('active');
+document.body.style.overflow = '';
+}
+});
+}
+
+// Init
+translatePage();
+langSelect.addEventListener('change', (e) => setLanguage(e.target.value));
+if (window.innerWidth < 768) document.getElementById('name')?.focus();
+});
+
+// Form Handling
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+e.preventDefault();
+let valid = true;
+const name = document.getElementById('name');
+const phone = document.getElementById('phone');
+const desc = document.getElementById('description');
+const nameError = document.getElementById('nameError');
+const phoneError = document.getElementById('phoneError');
+const descError = document.getElementById('descError');
+const successMessage = document.getElementById('successMessage');
+
+nameError.style.display = 'none';
+phoneError.style.display = 'none';
+descError.style.display = 'none';
+
+if (name.value.trim() === '') {
+nameError.textContent = currentLang === 'fr' ? 'Veuillez entrer votre nom' :
+currentLang === 'en' ? 'Please enter your name' :
+'الرجاء إدخال اسمك';
+nameError.style.display = 'block';
+valid = false;
+}
+if (phone.value.trim() === '') {
+phoneError.textContent = currentLang === 'fr' ? 'Veuillez entrer un numéro de téléphone valide' :
+currentLang === 'en' ? 'Please enter a valid phone number' :
+'الرجاء إدخال رقم هاتف صحيح';
+phoneError.style.display = 'block';
+valid = false;
+}
+if (desc.value.trim() === '') {
+descError.textContent = currentLang === 'fr' ? 'Veuillez décrire votre problème' :
+currentLang === 'en' ? 'Please describe your issue' :
+'الرجاء وصف مشكلتك';
+descError.style.display = 'block';
+valid = false;
+}
+
+if (valid) {
+fetch(this.action, {
+method: 'POST',
+body: new FormData(this),
+headers: { 'Accept': 'application/json' }
+}).then(response => {
+if (response.ok) {
+successMessage.style.display = 'block';
+this.reset();
+setTimeout(() => successMessage.style.display = 'none', 5000);
+} else {
+const errorMsg = currentLang === 'fr' ? 'Erreur lors de l’envoi. Réessayez plus tard.' :
+currentLang === 'en' ? 'Failed to send. Please try again later.' :
+'فشل الإرسال. حاول مجددًا لاحقًا.';
+alert(errorMsg);
+}
+}).catch(() => {
+const errorMsg = currentLang === 'fr' ? 'Erreur réseau. Vérifiez votre connexion.' :
+currentLang === 'en' ? 'Network error. Please check your connection.' :
+'خطأ في الشبكة. تحقق من اتصالك.';
+alert(errorMsg);
+});
+}
+});
+</script>
+<script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+</body>
+</html>

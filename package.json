@@ -1,0 +1,12 @@
+{
+  "name": "ihebtek-dashboard",
+  "version": "1.0.0",
+  "description": "Device submission dashboard for IhebTek",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "google-spreadsheet": "^4.1.3"
+  }
+}
