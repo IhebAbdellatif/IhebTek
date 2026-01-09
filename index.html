@@ -431,12 +431,6 @@ font-size: 0.9rem;
 margin-top: 5px;
 display: none;
 }
-.success-message {
-display: none;
-color: var(--primary);
-text-align: center;
-margin: 10px 0;
-}
 .submit-btn {
 width: 100%;
 padding: 16px;
@@ -532,9 +526,7 @@ border-top-right-radius: 24px;
 <img src="assets/logo.png" alt="IhebTek" class="hero-logo">
 <p>High Quality Fast Repair</p>
 </section>
-
 <div class="glass-content">
-
 <!-- Services Section -->
 <section class="services">
 <div class="section-title">
@@ -563,7 +555,6 @@ border-top-right-radius: 24px;
 <i class="fas fa-cogs"></i> <span class="trans" key="support">Support</span>
 </div>
 </div>
-
 <!-- Computer Services -->
 <div id="computer" class="service-category">
 <h3><i class="fas fa-laptop"></i>  <span class="trans" key="computer_title">Services Ordinateurs & Portables</span></h3>
@@ -582,7 +573,6 @@ border-top-right-radius: 24px;
 <li><strong><span class="trans" key="computer_14">Sécurité informatique</span></strong> : <span class="trans" key="computer_15">Installation d'antivirus, pare-feu, et conseils en chiffrement, mots de passe et phishing</span></li>
 </ul>
 </div>
-
 <!-- Smartphone & Tablet -->
 <div id="smartphone-tablet" class="service-category">
 <h3><i class="fas fa-mobile-alt"></i>  <span class="trans" key="smartphone_title">Réparation Smartphones & Tablettes</span></h3>
@@ -600,7 +590,6 @@ border-top-right-radius: 24px;
 <li><strong><span class="trans" key="phone_12">Service Sajalni</span></strong> : <span class="trans" key="phone_13">enregistrement des terminaux mobiles (téléphones et tablettes) importés individuellement de l’étranger</span></li>
 </ul>
 </div>
-
 <!-- Console -->
 <div id="console" class="service-category">
 <h3><i class="fas fa-gamepad"></i>  <span class="trans" key="console_title">Réparation de Consoles de Jeu</span></h3>
@@ -612,7 +601,6 @@ border-top-right-radius: 24px;
 <li><span class="trans" key="console_5">Récupération de sauvegardes et assistance logicielle</span></li>
 </ul>
 </div>
-
 <!-- Printers -->
 <div id="printers" class="service-category">
 <h3><i class="fas fa-print"></i>  <span class="trans" key="printers_title">Réparation d'Imprimantes</span></h3>
@@ -624,7 +612,6 @@ border-top-right-radius: 24px;
 <li><span class="trans" key="print_5">Installation et configuration de pilotes</span></li>
 </ul>
 </div>
-
 <!-- Cameras -->
 <div id="cameras" class="service-category">
 <h3><i class="fas fa-camera"></i>  <span class="trans" key="cameras_title">Réparation de Caméras</span></h3>
@@ -635,7 +622,6 @@ border-top-right-radius: 24px;
 <li><span class="trans" key="cam_4">Accès à distance et sauvegarde des enregistrements</span></li>
 </ul>
 </div>
-
 <!-- Server & Network -->
 <div id="server-network" class="service-category">
 <h3><i class="fas fa-network-wired"></i>  <span class="trans" key="network_title">Serveurs & Réseaux</span></h3>
@@ -647,7 +633,6 @@ border-top-right-radius: 24px;
 <li><span class="trans" key="net_5">Configuration de NAS (stockage réseau)</span></li>
 </ul>
 </div>
-
 <!-- General Support -->
 <div id="general-support" class="service-category">
 <h3><i class="fas fa-cogs"></i>  <span class="trans" key="support_title">Support Général</span></h3>
@@ -659,7 +644,6 @@ border-top-right-radius: 24px;
 <li><strong>⚡ <span class="trans" key="sup_5">Service 24h/24</span></strong></li>
 </ul>
 </div>
-
 <!-- ✅ STATIC MINI GALLERY WITH VIDEO + IMAGE -->
 <section class="gallery-section">
 <div class="section-title">
@@ -672,7 +656,7 @@ border-top-right-radius: 24px;
 alt="Réparation PC">
 <div class="gallery-caption">Réparation PC portable</div>
 </div>
- <!-- 🔸 VIDEO -->
+<!-- 🔸 VIDEO -->
 <div class="gallery-item" data-video="assets/videos/repair-demo.mp4">
 <video poster="assets\gallery\iphone.jpeg" controls preload="metadata">
 <source src="assets\gallery\iPhone.mp4" type="video/mp4">
@@ -708,7 +692,6 @@ alt="Atelier">
 </div>
 </div>
 </section>
-
 <!-- Contact Us Section -->
 <section class="contact-section">
 <div class="contact-container">
@@ -732,13 +715,9 @@ alt="Atelier">
 <button type="submit" class="submit-btn">
 <i class="fas fa-envelope"></i> <span class="trans" key="email">Envoyer par e-mail</span>
 </button>
-<div class="success-message" id="successMessage">
-✅ Merci ! Votre message a été envoyé. Nous vous répondrons sous 24h.
-</div>
 </form>
 </div>
 </section>
-
 <!-- Footer -->
 <footer>
 <p>© 2026 IhebTek. Tous droits réservés.</p>
@@ -757,14 +736,11 @@ alt="Atelier">
 </a>
 </div>
 </footer>
-
 </div> <!-- .glass-content -->
-
 <!-- Screen Reader Only -->
 <div aria-live="polite" class="sr-only">
 Page traduite en <span id="current-lang-name">français</span>
 </div>
-
 <!-- ✅ Updated Lightbox HTML -->
 <div id="lightbox" class="lightbox-overlay">
 <span class="close-btn" id="close-lightbox">&times;</span>
@@ -773,7 +749,6 @@ Page traduite en <span id="current-lang-name">français</span>
 </div>
 <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
-
 <!-- JavaScript -->
 <script>
 const translations = {
@@ -964,18 +939,15 @@ contact: "اتصل بنا", name: "الاسم الكامل", phone: "رقم ال
 problem: "وصف المشكلة", email: "إرسال عبر البريد الإلكتروني", open24: "مفتوح على مدار الساعة", gallery: "معرض الصور"
 }
 };
-
 // Language & Theme
 const langSelect = document.getElementById('langSelect');
 const currentLangName = document.getElementById('current-lang-name');
 let currentLang = localStorage.getItem('lang') || 'fr';
-
 function setLanguage(lang) {
 currentLang = lang;
 localStorage.setItem('lang', lang);
 translatePage();
 }
-
 function translatePage() {
 document.querySelectorAll('.trans').forEach(el => {
 const key = el.getAttribute('key');
@@ -989,7 +961,6 @@ document.body.style.fontFamily = currentLang === 'ar' ? "'Tajawal', sans-serif" 
 langSelect.value = currentLang;
 currentLangName.textContent = currentLang === 'fr' ? 'français' : currentLang === 'en' ? 'anglais' : 'arabe';
 }
-
 const themeToggle = document.getElementById('themeToggle');
 const icon = themeToggle.querySelector('i');
 const html = document.documentElement;
@@ -1010,16 +981,13 @@ localStorage.setItem('theme', 'dark');
 icon.classList.replace('fa-moon', 'fa-sun');
 }
 });
-
 // ✅ Enhanced Lightbox Function
 function openLightbox(type, src, caption) {
 const lb = document.getElementById('lightbox');
 const content = document.getElementById('lightbox-content');
 const captionEl = document.getElementById('lightbox-caption');
-
 content.innerHTML = '';
 captionEl.textContent = caption;
-
 if (type === 'image') {
 const img = document.createElement('img');
 img.src = src;
@@ -1036,11 +1004,9 @@ source.type = 'video/mp4';
 video.appendChild(source);
 content.appendChild(video);
 }
-
 lb.classList.add('active');
 document.body.style.overflow = 'hidden';
 }
-
 // Gallery Click Handler
 document.addEventListener('DOMContentLoaded', () => {
 const menuItems = document.querySelectorAll('.menu-item');
@@ -1073,20 +1039,17 @@ currentlyActiveId = targetId;
 }
 });
 });
-
 // ✅ Handle both images and videos in gallery
 document.querySelectorAll('.gallery-item').forEach(item => {
 const img = item.querySelector('img');
 const videoEl = item.querySelector('video');
 const caption = item.querySelector('.gallery-caption')?.textContent || '';
-
 if (img) {
 img.addEventListener('click', (e) => {
 e.preventDefault();
 openLightbox('image', img.src, caption);
 });
 }
-
 if (videoEl) {
 // Remove inline controls to avoid conflict
 videoEl.removeAttribute('controls');
@@ -1098,7 +1061,6 @@ openLightbox('video', src, caption);
 });
 }
 });
-
 // Lightbox Close
 const lightbox = document.getElementById('lightbox');
 const closeBtn = document.getElementById('close-lightbox');
@@ -1120,74 +1082,72 @@ document.body.style.overflow = '';
 }
 });
 }
-
 // Init
 translatePage();
 langSelect.addEventListener('change', (e) => setLanguage(e.target.value));
 if (window.innerWidth < 768) document.getElementById('name')?.focus();
 });
-
-// Form Handling
+// ✅ Form Handling — Redirect to merci.html on success
 document.getElementById('contactForm').addEventListener('submit', function(e) {
-e.preventDefault();
-let valid = true;
-const name = document.getElementById('name');
-const phone = document.getElementById('phone');
-const desc = document.getElementById('description');
-const nameError = document.getElementById('nameError');
-const phoneError = document.getElementById('phoneError');
-const descError = document.getElementById('descError');
-const successMessage = document.getElementById('successMessage');
+  e.preventDefault();
+  let valid = true;
+  const name = document.getElementById('name');
+  const phone = document.getElementById('phone');
+  const desc = document.getElementById('description');
+  const nameError = document.getElementById('nameError');
+  const phoneError = document.getElementById('phoneError');
+  const descError = document.getElementById('descError');
 
-nameError.style.display = 'none';
-phoneError.style.display = 'none';
-descError.style.display = 'none';
+  nameError.style.display = 'none';
+  phoneError.style.display = 'none';
+  descError.style.display = 'none';
 
-if (name.value.trim() === '') {
-nameError.textContent = currentLang === 'fr' ? 'Veuillez entrer votre nom' :
-currentLang === 'en' ? 'Please enter your name' :
-'الرجاء إدخال اسمك';
-nameError.style.display = 'block';
-valid = false;
-}
-if (phone.value.trim() === '') {
-phoneError.textContent = currentLang === 'fr' ? 'Veuillez entrer un numéro de téléphone valide' :
-currentLang === 'en' ? 'Please enter a valid phone number' :
-'الرجاء إدخال رقم هاتف صحيح';
-phoneError.style.display = 'block';
-valid = false;
-}
-if (desc.value.trim() === '') {
-descError.textContent = currentLang === 'fr' ? 'Veuillez décrire votre problème' :
-currentLang === 'en' ? 'Please describe your issue' :
-'الرجاء وصف مشكلتك';
-descError.style.display = 'block';
-valid = false;
-}
+  if (name.value.trim() === '') {
+    nameError.textContent = currentLang === 'fr' ? 'Veuillez entrer votre nom' :
+                             currentLang === 'en' ? 'Please enter your name' :
+                             'الرجاء إدخال اسمك';
+    nameError.style.display = 'block';
+    valid = false;
+  }
+  if (phone.value.trim() === '') {
+    phoneError.textContent = currentLang === 'fr' ? 'Veuillez entrer un numéro de téléphone valide' :
+                             currentLang === 'en' ? 'Please enter a valid phone number' :
+                             'الرجاء إدخال رقم هاتف صحيح';
+    phoneError.style.display = 'block';
+    valid = false;
+  }
+  if (desc.value.trim() === '') {
+    descError.textContent = currentLang === 'fr' ? 'Veuillez décrire votre problème' :
+                             currentLang === 'en' ? 'Please describe your issue' :
+                             'الرجاء وصف مشكلتك';
+    descError.style.display = 'block';
+    valid = false;
+  }
 
-if (valid) {
-fetch(this.action, {
-method: 'POST',
-body: new FormData(this),
-headers: { 'Accept': 'application/json' }
-}).then(response => {
-if (response.ok) {
-successMessage.style.display = 'block';
-this.reset();
-setTimeout(() => successMessage.style.display = 'none', 5000);
-} else {
-const errorMsg = currentLang === 'fr' ? 'Erreur lors de l’envoi. Réessayez plus tard.' :
-currentLang === 'en' ? 'Failed to send. Please try again later.' :
-'فشل الإرسال. حاول مجددًا لاحقًا.';
-alert(errorMsg);
-}
-}).catch(() => {
-const errorMsg = currentLang === 'fr' ? 'Erreur réseau. Vérifiez votre connexion.' :
-currentLang === 'en' ? 'Network error. Please check your connection.' :
-'خطأ في الشبكة. تحقق من اتصالك.';
-alert(errorMsg);
-});
-}
+  if (valid) {
+    fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        const lang = currentLang || 'fr';
+        window.location.href = `merci.html?lang=${lang}`;
+      } else {
+        const errorMsg = currentLang === 'fr' ? 'Erreur lors de l’envoi. Réessayez plus tard.' :
+                         currentLang === 'en' ? 'Failed to send. Please try again later.' :
+                         'فشل الإرسال. حاول مجددًا لاحقًا.';
+        alert(errorMsg);
+      }
+    })
+    .catch(() => {
+      const errorMsg = currentLang === 'fr' ? 'Erreur réseau. Vérifiez votre connexion.' :
+                       currentLang === 'en' ? 'Network error. Please check your connection.' :
+                       'خطأ في الشبكة. تحقق من اتصالك.';
+      alert(errorMsg);
+    });
+  }
 });
 </script>
 <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
